@@ -1,0 +1,207 @@
+/* === Переменные === */
+:root {
+  --accent: #2b74ff;
+  --accent-weak: rgba(43, 116, 255, 0.12);
+  --border: #d7dbe2;
+  --text: #1f2430;
+  --muted: #6b7280;
+}
+
+/* === Общие === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 2%; /* отступы от краёв экрана */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+}
+
+/* === Шапка === */
+table:first-of-type h2 {
+  margin: 2% 0;
+  font-weight: 600;
+}
+
+/* === Таблицы === */
+table {
+  border-collapse: collapse;
+  background: #fff;
+  margin-bottom: 2%;
+  width: 100%;
+}
+
+table[border="1"] {
+  border-color: var(--border);
+}
+
+td, th {
+  border: 1px solid var(--border);
+  padding: 1.2% 1.5%; /* в процентах */
+  vertical-align: middle;
+}
+
+th {
+  text-align: center; /* шапка таблиц по центру */
+}
+
+h3 {
+  margin: 2% 0 1% 0;
+}
+
+/* Рисунок области — SVG */
+.area-svg {
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 2% auto;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+
+/* === Форма === */
+#pointForm {
+  width: 92%;
+  margin: 2% auto;
+}
+
+#pointForm table {
+  width: 100%;
+  border: none;
+}
+
+#pointForm td {
+  border: none;
+  padding: 1% 0;
+}
+
+/* колонка с label в форме */
+#pointForm tr > td:first-child {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+  padding-right: 8px;   /* <-- чуть больше отступ справа */
+  vertical-align: top;  /* <-- выравнивание по верху */
+}
+
+#pointForm tr > td:last-child {
+  width: 99%;
+}
+
+/* подписи */
+#pointForm label {
+  font-weight: 500;
+}
+
+/* текстовые поля */
+#pointForm input[type="text"] {
+  width: 100%;
+  padding: 1.2% 1.5%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+#pointForm input[type="text"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-weak);
+}
+
+/* === Группа R === */
+.r-group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.r-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 2%;
+  padding: .4% 1%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.r-group label:hover {
+  background: #f3f6ff;
+}
+.r-group input[type="radio"] {
+  transform: translateY(1px);
+}
+
+/* визуально скрытая легенда */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+}
+
+/* === Кнопки === */
+button {
+  padding: 1% 2.2%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: background .15s, transform .02s;
+  margin: 0.5% 0.5%;
+}
+button:hover {
+  background: #eef2ff;
+}
+button:active {
+  transform: translateY(1px);
+}
+
+/* === Ошибки === */
+input.is-invalid {
+  border-color: #e11d48;
+  box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.15);
+}
+.error-msg {
+  font-size: 0.9rem;
+  color: #e11d48;
+  min-height: 1.2em;
+  margin-top: 0.4%;
+}
+
+/* === Таблица истории === */
+#historyTable {
+  table-layout: fixed; /* фиксированная ширина */
+  width: 100%;
+  margin: 1.5% 0;
+}
+#historyTable th, #historyTable td {
+  text-align: center;
+  white-space: nowrap;
+}
+#historyTable thead th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+#historyTable tbody tr:nth-child(odd) {
+  background: #fafafa;
+}
+#historyTable tbody tr:hover {
+  background: #f0f6ff;
+}
+
+/* Шапка с данными */
+#headerTable td {
+  background: linear-gradient(to right, rgb(7, 141, 111), rgb(152, 202, 153), rgb(255, 255, 255) 45%, rgb(255, 255, 255), rgb(255, 255, 255) 55%, rgb(205, 208, 234), rgb(123, 173, 226) 70%, rgb(69, 76, 189), rgb(63, 26, 121));
+  color: white;
+  padding: 1.5% 0;
+}
+
+#headerTable h2 {
+  margin: 0;
+  font-weight: 600;
+  color: black; /* текст поверх градиента */
+}
