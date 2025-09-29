@@ -1,4 +1,3 @@
-// === Валидация ===
 const dec2 = /^-?\d+(\.\d{1,2})?$/; // десятичные числа с точкой, до 2 знаков
 
 const limits = {
@@ -51,7 +50,6 @@ function validateR() {
   radios.forEach(r => { if (r.checked) checked = r.value; });
 
   if (!checked || !limits.r.includes(checked)) {
-    // Без alert — показываем подсказку под блоком R
     err.textContent = "Выберите одно из значений R (1–5)";
     return { ok: false };
   } else {
@@ -63,7 +61,6 @@ function validateR() {
   }
 }
 
-// === История ===
 function addToHistory(record) {
   const tbody = document.querySelector("#historyTable tbody");
   const tr = document.createElement("tr");
@@ -110,7 +107,6 @@ function clearErrors() {
   document.querySelectorAll("#pointForm td > label").forEach(l => (l.style.outline = "none"));
 }
 
-// === Сабмит формы ===
 function handleSubmit(e) {
   e.preventDefault();
 
@@ -118,16 +114,13 @@ function handleSubmit(e) {
   const vY = validateNumberField("y", "yErr", limits.y);
   const vR = validateR();
 
-  // если что-то не валидно — не отправляем
   if (!vX.ok || !vY.ok || !vR.ok) {
-    // фокус на первое невалидное поле
     if (!vX.ok) document.getElementById("x").focus();
     else if (!vY.ok) document.getElementById("y").focus();
     else document.querySelector("input[name='r']").focus();
     return;
   }
 
-  // форматируем по 2 знака
   const x = vX.value;
   const y = vY.value;
   const r = vR.value;
@@ -141,31 +134,24 @@ function handleSubmit(e) {
   const rec = { x, y, r, hit, now, execTime };
   addToHistory(rec);
   saveHistory();
-
-  // можно также сбрасывать подсказки/подсветку
 }
 
-// === Инициализация ===
 document.addEventListener("DOMContentLoaded", () => {
   loadHistory();
 
   const form = document.getElementById("pointForm");
   form.addEventListener("submit", handleSubmit);
 
-  // live-валидация по вводу
   document.getElementById("x").addEventListener("input", () => validateNumberField("x", "xErr", limits.x));
   document.getElementById("y").addEventListener("input", () => validateNumberField("y", "yErr", limits.y));
   document.querySelectorAll("input[name='r']").forEach(r => {
     r.addEventListener("change", validateR);
   });
 
-  // кнопка очистки
   const clearBtn = document.querySelector("button[onclick='clearHistory()']");
   if (clearBtn) clearBtn.addEventListener("click", clearHistory);
 
-  // кнопка сброса формы
   form.addEventListener("reset", () => {
-    // ждём, пока браузер выполнит reset, затем чистим ошибки
-    setTimeout(clearErrors, 0);
+    clearErrors();
   });
 });

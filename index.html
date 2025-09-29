@@ -7,9 +7,9 @@
 </head>
 <body>
     <!-- Шапка -->
-    <table border="1" width="100%" id="headerTable">
+    <table class="table" width="100%" id="headerTable">
         <tr>
-            <td align="center" colspan="2">
+            <td class="centered-td" colspan="2">
                 <h2>Жеребцов Михаил Александрович — Группа P3217 — Вариант 465887</h2>
             </td>
         </tr>
@@ -18,78 +18,78 @@
     <br>
 
     <!-- Основная таблица -->
-    <table border="1" width="100%">
+    <table class="table" width="100%">
         <tr>
             <!-- Левая колонка: рисунок -->
-            <td width="30%" align="center">
+            <td width="30%" class="centered-td">
                 <h3>Область</h3>
                 <svg class="area-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="График области для проверки попадания точки">
-                <defs>
-                    <style>
-                    .axis { stroke:#111; stroke-width:1.5; }
-                    .tick { stroke:#111; stroke-width:1; }
-                    .label { font: 12px system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill:#111; }
-                    .region { fill:#4ea6ff; stroke:none; }
-                    </style>
-                </defs>
+                    <defs>
+                        <style>
+                        .axis { stroke:#111; stroke-width:1.5; }
+                        .tick { stroke:#111; stroke-width:1; }
+                        .label { font: 12px system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill:#111; }
+                        .region { fill:#4ea6ff; stroke:none; }
+                        </style>
+                    </defs>
 
-                <!-- СИНЯЯ ОБЛАСТЬ (строго как на образце) -->
-                <g>
-                    <!-- Четверть круга во II квадранте: центр (200,200), радиус 120, от 90° до 180° -->
-                    <path class="region" d="M200,80
-                                            A120,120 0 0 0 80,200
-                                            L200,200 Z"/>
+                    <!-- СИНЯЯ ОБЛАСТЬ (строго как на образце) -->
+                    <g>
+                        <!-- Четверть круга во II квадранте: центр (200,200), радиус 120, от 90° до 180° -->
+                        <path class="region" d="M200,80
+                                                A120,120 0 0 0 80,200
+                                                L200,200 Z"/>
 
-                    <!-- Треугольник: (-R/2,0) → (0,-R) → (0,0) -->
-                    <polygon class="region" points="140,200 200,320 200,200"/>
+                        <!-- Треугольник: (-R/2,0) → (0,-R) → (0,0) -->
+                        <polygon class="region" points="140,200 200,320 200,200"/>
 
-                    <!-- Прямоугольник в IV квадранте: x∈[0; R/2], y∈[-R; 0] -->
-                    <rect class="region" x="200" y="200" width="60" height="120"/>
-                </g>
-                <!-- Координатные оси -->
-                <!-- центр (0,0) в px -->
-                <!-- cx=200, cy=200, «единица R» = 120 px, «R/2» = 60 px -->
-                <g>
-                    <!-- Ось X -->
-                    <line class="axis" x1="20" y1="200" x2="380" y2="200"/>
-                    <!-- Стрелка X -->
-                    <path class="axis" d="M380,200 l-8,-4 l0,8 Z" />
-                    <text class="label" x="388" y="205">x</text>
+                        <!-- Прямоугольник в IV квадранте: x∈[0; R/2], y∈[-R; 0] -->
+                        <rect class="region" x="200" y="200" width="60" height="120"/>
+                    </g>
+                    <!-- Координатные оси -->
+                    <!-- центр (0,0) в px -->
+                    <!-- cx=200, cy=200, «единица R» = 120 px, «R/2» = 60 px -->
+                    <g>
+                        <!-- Ось X -->
+                        <line class="axis" x1="20" y1="200" x2="380" y2="200"/>
+                        <!-- Стрелка X -->
+                        <path class="axis" d="M380,200 l-8,-4 l0,8 Z" />
+                        <text class="label" x="388" y="205">x</text>
 
-                    <!-- Ось Y -->
-                    <line class="axis" x1="200" y1="380" x2="200" y2="20"/>
-                    <!-- Стрелка Y -->
-                    <path class="axis" d="M200,20 l-4,8 l8,0 Z" />
-                    <text class="label" x="205" y="16">y</text>
+                        <!-- Ось Y -->
+                        <line class="axis" x1="200" y1="380" x2="200" y2="20"/>
+                        <!-- Стрелка Y -->
+                        <path class="axis" d="M200,20 l-4,8 l8,0 Z" />
+                        <text class="label" x="205" y="16">y</text>
 
-                    <!-- Тики и подписи по X -->
-                    <!-- -R -->
-                    <line class="tick" x1="80" y1="195" x2="80" y2="205"/>
-                    <text class="label" x="72" y="218">-R</text>
-                    <!-- -R/2 -->
-                    <line class="tick" x1="140" y1="195" x2="140" y2="205"/>
-                    <text class="label" x="124" y="218">-R/2</text>
-                    <!-- R/2 -->
-                    <line class="tick" x1="260" y1="195" x2="260" y2="205"/>
-                    <text class="label" x="246" y="218">R/2</text>
-                    <!-- R -->
-                    <line class="tick" x1="320" y1="195" x2="320" y2="205"/>
-                    <text class="label" x="314" y="218">R</text>
+                        <!-- Тики и подписи по X -->
+                        <!-- -R -->
+                        <line class="tick" x1="80" y1="195" x2="80" y2="205"/>
+                        <text class="label" x="72" y="218">-R</text>
+                        <!-- -R/2 -->
+                        <line class="tick" x1="140" y1="195" x2="140" y2="205"/>
+                        <text class="label" x="124" y="218">-R/2</text>
+                        <!-- R/2 -->
+                        <line class="tick" x1="260" y1="195" x2="260" y2="205"/>
+                        <text class="label" x="246" y="218">R/2</text>
+                        <!-- R -->
+                        <line class="tick" x1="320" y1="195" x2="320" y2="205"/>
+                        <text class="label" x="314" y="218">R</text>
 
-                    <!-- Тики и подписи по Y -->
-                    <!-- R -->
-                    <line class="tick" x1="195" y1="80" x2="205" y2="80"/>
-                    <text class="label" x="210" y="84">R</text>
-                    <!-- R/2 -->
-                    <line class="tick" x1="195" y1="140" x2="205" y2="140"/>
-                    <text class="label" x="210" y="144">R/2</text>
-                    <!-- -R/2 -->
-                    <line class="tick" x1="195" y1="260" x2="205" y2="260"/>
-                    <text class="label" x="210" y="264">-R/2</text>
-                    <!-- -R -->
-                    <line class="tick" x1="195" y1="320" x2="205" y2="320"/>
-                    <text class="label" x="210" y="324">-R</text>
-                </g>
+                        <!-- Тики и подписи по Y -->
+                        <!-- R -->
+                        <line class="tick" x1="195" y1="80" x2="205" y2="80"/>
+                        <text class="label" x="210" y="84">R</text>
+                        <!-- R/2 -->
+                        <line class="tick" x1="195" y1="140" x2="205" y2="140"/>
+                        <text class="label" x="210" y="144">R/2</text>
+                        <!-- -R/2 -->
+                        <line class="tick" x1="195" y1="260" x2="205" y2="260"/>
+                        <text class="label" x="210" y="264">-R/2</text>
+                        <!-- -R -->
+                        <line class="tick" x1="195" y1="320" x2="205" y2="320"/>
+                        <text class="label" x="210" y="324">-R</text>
+                    </g>
                 </svg>
             </td>
 
@@ -100,54 +100,53 @@
                     <table>
                         <!-- X -->
                         <tr>
-                        <td><label for="x">X:</label></td>
-                        <td>
-                            <input
-                            type="text" id="x" name="x"
-                            placeholder="-5 … 3"
-                            title="X ∈ [-5; 3], десятичный разделитель — точка, до 2 знаков"
-                            autocomplete="off"
-                            >
-                            <div class="error-msg" id="xErr"></div>
-                        </td>
+                            <td><label for="x">X:</label></td>
+                            <td>
+                                <input
+                                type="text" id="x" name="x"
+                                placeholder="-5 … 3"
+                                title="X ∈ [-5; 3], десятичный разделитель — точка, до 2 знаков"
+                                autocomplete="off"
+                                >
+                                <div class="error-msg" id="xErr"></div>
+                            </td>
                         </tr>
 
                         <!-- Y -->
                         <tr>
-                        <td><label for="y">Y:</label></td>
-                        <td>
-                            <input
-                            type="text" id="y" name="y"
-                            placeholder="-3 … 5"
-                            title="Y ∈ [-3; 5], десятичный разделитель — точка, до 2 знаков"
-                            autocomplete="off"
-                            >
-                            <div class="error-msg" id="yErr"></div>
-                        </td>
+                            <td><label for="y">Y:</label></td>
+                            <td>
+                                <input
+                                type="text" id="y" name="y"
+                                placeholder="-3 … 5"
+                                title="Y ∈ [-3; 5], десятичный разделитель — точка, до 2 знаков"
+                                autocomplete="off"
+                                >
+                                <div class="error-msg" id="yErr"></div>
+                            </td>
                         </tr>
 
-                        <!-- R как group с «меткой» через <legend> -->
+                        <!-- R -->
                         <tr>
-                        <td style="vertical-align: top;">
-                            <!-- легенда — это и есть «лейбл» группы -->
-                            <label for="r-1" id="rLegend">R:</label>
-                        </td>
-                        <td>
-                            <fieldset class="r-group" aria-labelledby="rLegend">
-                            <legend class="visually-hidden">Выбор R</legend>
+                            <td style="vertical-align: top;">
+                                <label for="r-1" id="rLegend">R:</label>
+                            </td>
+                            <td>
+                                <fieldset class="r-group" aria-labelledby="rLegend">
+                                    <legend class="visually-hidden">Выбор R</legend>
 
-                            <label title="R = 1"><input id="r-1" type="radio" name="r" value="1"><span>1</span></label>
-                            <label title="R = 2"><input id="r-2" type="radio" name="r" value="2"><span>2</span></label>
-                            <label title="R = 3"><input id="r-3" type="radio" name="r" value="3"><span>3</span></label>
-                            <label title="R = 4"><input id="r-4" type="radio" name="r" value="4"><span>4</span></label>
-                            <label title="R = 5"><input id="r-5" type="radio" name="r" value="5"><span>5</span></label>
-                            </fieldset>
+                                    <label title="R = 1"><input id="r-1" type="radio" name="r" value="1"><span>1</span></label>
+                                    <label title="R = 2"><input id="r-2" type="radio" name="r" value="2"><span>2</span></label>
+                                    <label title="R = 3"><input id="r-3" type="radio" name="r" value="3"><span>3</span></label>
+                                    <label title="R = 4"><input id="r-4" type="radio" name="r" value="4"><span>4</span></label>
+                                    <label title="R = 5"><input id="r-5" type="radio" name="r" value="5"><span>5</span></label>
+                                </fieldset>
 
-                            <div class="error-msg" id="rErr"></div>
-                        </td>
+                                <div class="error-msg" id="rErr"></div>
+                            </td>
                         </tr>
                         <tr>
-                            <td colspan="2" align="center">
+                            <td colspan="2" class="centered-td">
                                 <button type="submit">Проверить</button>
                                 <button type="reset">Очистить</button>
                             </td>
@@ -160,7 +159,7 @@
 
     <!-- Таблица истории -->
     <h3>История проверок</h3>
-    <table border="1" width="100%" id="historyTable">
+    <table class="table" width="100%" id="historyTable">
         <thead>
             <tr>
                 <th>X</th>
