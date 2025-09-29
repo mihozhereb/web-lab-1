@@ -107,6 +107,8 @@ function clearErrors() {
   document.querySelectorAll("#pointForm td > label").forEach(l => (l.style.outline = "none"));
 }
 
+const FCGI_ENDPOINT = "/fcgi-bin/fastcgi-server-1.0-SNAPSHOT.jar";
+
 function handleSubmit(e) {
   e.preventDefault();
 
@@ -115,25 +117,46 @@ function handleSubmit(e) {
   const vR = validateR();
 
   if (!vX.ok || !vY.ok || !vR.ok) {
-    if (!vX.ok) document.getElementById("x").focus();
-    else if (!vY.ok) document.getElementById("y").focus();
-    else document.querySelector("input[name='r']").focus();
+    if (!vX.ok) $("#x").focus();
+    else if (!vY.ok) $("#y").focus();
+    else $("input[name='r']").first().focus();
     return;
   }
 
-  const x = vX.value;
-  const y = vY.value;
-  const r = vR.value;
+  const x = Number(vX.value);
+  const y = Number(vY.value);
+  const r = Number(vR.value);
 
-  // TODO: тут будет реальный запрос к FastCGI через fetch GET
-  // Пока имитация ответа сервера:
-  const hit = Math.random() > 0.5 ? "Да" : "Нет";
-  const now = new Date().toLocaleString();
-  const execTime = Math.floor(Math.random() * 10) + " мс";
+  const $submitBtn = $('#pointForm button[type="submit"]');
+  const $rErr = $("#rErr");
+  $rErr.text(""); // очистка прошлых ошибок
+  $submitBtn.prop("disabled", true);
 
-  const rec = { x, y, r, hit, now, execTime };
-  addToHistory(rec);
-  saveHistory();
+  $.ajax({
+    url: FCGI_ENDPOINT,
+    type: "POST",
+    contentType: "application/json; charset=UTF-8",
+    data: JSON.stringify({ x, y, r }),
+    dataType: "json",
+    success: function (data) {
+      const rec = {
+        x: Number(data.x).toFixed(2),
+        y: Number(data.y).toFixed(2),
+        r: data.r,
+        hit: data.hit ? "Да" : "Нет",
+        now: data.time ? new Date(data.time).toLocaleString() : new Date().toLocaleString(),
+        execTime: (typeof data.timing === "number" ? data.timing : Number(data.timing || 0)) + " нс"
+      };
+      addToHistory(rec);
+      saveHistory();
+    },
+    error: function (xhr, status, err) {
+      $rErr.text("Ошибка запроса: " + (xhr.responseText || status));
+    },
+    complete: function () {
+      $submitBtn.prop("disabled", false);
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
